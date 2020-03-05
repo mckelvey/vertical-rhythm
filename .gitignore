@@ -8,3 +8,6 @@
 
 # Ignore dependencies
 node_modules
+
+# Ignore development
+dev

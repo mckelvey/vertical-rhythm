@@ -11,7 +11,10 @@ const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const StyleLintPlugin = require('stylelint-webpack-plugin');
 
 const mode = process.env.MODE || 'production';
-const destination = path.resolve(__dirname, 'dist');
+const destination = path.resolve(
+  __dirname,
+  mode === 'production' ? 'stylesheet' : 'dev'
+);
 
 const plugins = [
   new CleanWebpackPlugin({
