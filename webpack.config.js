@@ -29,12 +29,13 @@ const plugins = [
     },
   ]),
   new HtmlWebpackPlugin({
+    chunks: ['stylesheet'],
     filename: path.resolve(destination, 'index.html'),
     template: 'templates/index.html',
   }),
   new ResourceHintsWebpackPlugin(),
   new MiniCssExtractPlugin({
-    filename: 'styles/bundle.[contenthash].css',
+    filename: 'styles/[name].[contenthash].css',
   }),
   new StyleLintPlugin({
     context: 'src',
@@ -49,10 +50,13 @@ if (mode !== 'production') {
 
 module.exports = {
   mode,
-  entry: [path.resolve(__dirname, 'src', 'index.js')],
+  entry: {
+    import: path.resolve(__dirname, 'src', 'import.js'),
+    stylesheet: path.resolve(__dirname, 'src', 'stylesheet.js'),
+  },
   output: {
     path: destination,
-    filename: 'scripts/bundle.[hash].js',
+    filename: 'scripts/[name].[hash].js',
     publicPath: '/',
   },
   module: {
