@@ -1,0 +1,20 @@
+// Guides: Vertical
+
+body.with-vertical-guide {
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background:
+      repeating-linear-gradient(
+        transparent,
+        transparent #{$vertical-rhythm - 0.5px},
+        $guide-color #{$vertical-rhythm - 0.5px},
+        $guide-color #{$vertical-rhythm + 0.5px}
+      );
+    z-index: -1;
+  }
+}
