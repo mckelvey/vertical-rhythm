@@ -1,7 +1,7 @@
 {
   "name": "vertical-rhythm",
   "version": "0.0.1",
-  "description": "",
+  "description": "Tools for a classic grid layout with vertical rhythm.",
   "repository": "github:mckelvey/vertical-rhythm",
   "main": "dist/index.js",
   "license": "MIT",
