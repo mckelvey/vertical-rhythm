@@ -1,0 +1,21 @@
+// DOM Elements
+
+* {
+  box-sizing: border-box;
+}
+
+:root {
+  --vertical-rhythm: #{$vertical-rhythm};
+  line-height-step: var(--vertical-rhythm, #{$vertical-rhythm});
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  line-height: var(--vertical-rhythm, #{$vertical-rhythm});
+}
+
+h1 {
+  margin-top: calc(2 * var(--vertical-rhythm, #{$vertical-rhythm}));
+}

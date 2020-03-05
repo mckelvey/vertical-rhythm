@@ -1,0 +1,41 @@
+// Grid
+
+$column-pattern: var(--vertical-rhythm, #{$vertical-rhythm}) minmax(calc(var(--vertical-rhythm, #{$vertical-rhythm}) * 10), 1fr) var(--vertical-rhythm, #{$vertical-rhythm});
+
+main {
+  display: grid;
+  grid-template-columns: $column-pattern $column-pattern $column-pattern $column-pattern;
+  grid-template-rows: $column-pattern $column-pattern $column-pattern $column-pattern;
+
+  > * {
+    display: block;
+    margin: 0;
+    grid-column: 2;
+    background-color: rebeccapurple;
+
+    &:nth-child(1) {
+      grid-column: 2;
+      grid-row: 2;
+    }
+
+    &:nth-child(2) {
+      grid-column: 5;
+      grid-row: 2;
+    }
+
+    &:nth-child(3) {
+      grid-column: 8;
+      grid-row: 2;
+    }
+
+    &:nth-child(4) {
+      grid-column: 11;
+      grid-row: 2;
+    }
+
+    &:nth-child(5) {
+      grid-column: 2;
+      grid-row: 5;
+    }
+  }
+}

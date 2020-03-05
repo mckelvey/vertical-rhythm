@@ -11,9 +11,9 @@ body.with-vertical-guide {
     background:
       repeating-linear-gradient(
         transparent,
-        transparent #{$vertical-rhythm - 0.5px},
-        $guide-color #{$vertical-rhythm - 0.5px},
-        $guide-color #{$vertical-rhythm + 0.5px}
+        transparent calc(var(--vertical-rhythm, #{$vertical-rhythm}) - 0.5px),
+        $guide-color calc(var(--vertical-rhythm, #{$vertical-rhythm}) - 0.5px),
+        $guide-color calc(var(--vertical-rhythm, #{$vertical-rhythm}) + 0.5px)
       );
     z-index: -1;
   }
