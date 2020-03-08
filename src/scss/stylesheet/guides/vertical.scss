@@ -1,6 +1,8 @@
 // Guides: Vertical
 
-body.with-vertical-guide {
+.with-vertical-guides {
+  position: relative;
+
   &::before {
     content: '';
     position: absolute;
@@ -10,11 +12,17 @@ body.with-vertical-guide {
     left: 0;
     background:
       repeating-linear-gradient(
-        transparent,
-        transparent calc(var(--vertical-rhythm, #{$vertical-rhythm}) - 0.5px),
-        $guide-color calc(var(--vertical-rhythm, #{$vertical-rhythm}) - 0.5px),
-        $guide-color calc(var(--vertical-rhythm, #{$vertical-rhythm}) + 0.5px)
+        $guide-color,
+        $guide-color 0.5px,
+        transparent 0.5px,
+        transparent calc(var(--vertical-rhythm) - 0.5px),
+        $guide-color calc(var(--vertical-rhythm) - 0.5px),
+        $guide-color var(--vertical-rhythm)
       );
     z-index: -1;
   }
+}
+
+.with-grid-paper {
+  @extend .with-vertical-guides;
 }

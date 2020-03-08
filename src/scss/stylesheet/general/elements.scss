@@ -6,14 +6,29 @@
 
 :root {
   --vertical-rhythm: #{$vertical-rhythm};
-  line-height-step: var(--vertical-rhythm, #{$vertical-rhythm});
+  --columns: #{$columns};
+  @if $minimum-column-width % $vertical-rhythm == 0 {
+    --minimum-column-width: #{$minimum-column-width};
+  } @else {
+    --minimum-column-width: #{$minimum-column-width - ($minimum-column-width % $vertical-rhythm) + $vertical-rhythm};
+  }
+  --column-width: calc((100% - (var(--columns) * 2 * var(--vertical-rhythm))) / var(--columns));
+  --rows: #{$rows};
+  @if $minimum-row-height % $vertical-rhythm == 0 {
+    --minimum-row-height: #{$minimum-row-height};
+  } @else {
+    --minimum-row-height: #{$minimum-row-height - ($minimum-row-height % $vertical-rhythm) + $vertical-rhythm};
+  }
+  --column-pattern: var(--vertical-rhythm) minmax(var(--minimum-column-width), 1fr) var(--vertical-rhythm);
+  --row-pattern: var(--vertical-rhythm) var(--minimum-row-height) var(--vertical-rhythm);
+  line-height-step: var(--vertical-rhythm);
 }
 
 html,
 body {
   margin: 0;
   padding: 0;
-  line-height: var(--vertical-rhythm, #{$vertical-rhythm});
+  line-height: var(--vertical-rhythm);
 }
 
 html {
@@ -25,5 +40,5 @@ body {
 }
 
 h1 {
-  margin-top: calc(2 * var(--vertical-rhythm, #{$vertical-rhythm}));
+  margin-top: calc(2 * var(--vertical-rhythm));
 }

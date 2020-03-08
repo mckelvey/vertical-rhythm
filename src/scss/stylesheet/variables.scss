@@ -1,3 +1,9 @@
 // Variables
 
 $vertical-rhythm: 18px !default;
+
+$columns: 5 !default;
+$minimum-column-width: 1px !default; // use same units as vertical-rhythm
+
+$rows: 4 !default;
+$minimum-row-height: 180px !default; // use same units as vertical-rhythm

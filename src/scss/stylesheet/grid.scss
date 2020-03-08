@@ -1,56 +1,54 @@
 // Grid
 
-$column-pattern: var(--vertical-rhythm, #{$vertical-rhythm}) minmax(calc(var(--vertical-rhythm, #{$vertical-rhythm}) * 10), 1fr) var(--vertical-rhythm, #{$vertical-rhythm});
-
-main {
+.grid {
   display: grid;
-  grid-template-columns: $column-pattern $column-pattern $column-pattern $column-pattern;
-  grid-template-rows: $column-pattern $column-pattern $column-pattern $column-pattern;
+  grid-template-columns: repeat(var(--columns), var(--column-pattern));
+  grid-template-rows: repeat(var(--rows), var(--row-pattern));
 
   > * {
     display: block;
     margin: 0;
     background-color: rebeccapurple;
-    --primary-column: 1;
-    --columns: 1;
-    --primary-row: 1;
-    --rows: 1;
-    --expand-top: 0;
-    --expand-right: 0;
-    --expand-bottom: 0;
-    --expand-left: 0;
-    grid-column: calc(var(--primary-column) + ((var(--primary-column) - 1) * 2) + 1 - var(--expand-left)) / span calc(var(--columns) + ((var(--columns) - 1) * 2) + var(--expand-left) + var(--expand-right));
-    grid-row: calc(var(--primary-row) + ((var(--primary-row) - 1) * 2) + 1 - var(--expand-top)) / span calc(var(--rows) + ((var(--rows) - 1) * 2) + var(--expand-top) + var(--expand-bottom));
+    --column: 1;
+    --span-columns: 1;
+    --row: 1;
+    --span-rows: 1;
+    --overflow-top: 0;
+    --overflow-right: 0;
+    --overflow-bottom: 0;
+    --overflow-left: 0;
+    grid-column: calc(var(--column) + ((var(--column) - 1) * 2) + 1 - var(--overflow-left)) / span calc(var(--span-columns) + ((var(--span-columns) - 1) * 2) + var(--overflow-left) + var(--overflow-right));
+    grid-row: calc(var(--row) + ((var(--row) - 1) * 2) + 1 - var(--overflow-top)) / span calc(var(--span-rows) + ((var(--span-rows) - 1) * 2) + var(--overflow-top) + var(--overflow-bottom));
 
     &:nth-child(1) {
-      --columns: 2;
+      --span-columns: 2;
     }
 
     &:nth-child(2) {
-      --columns: 2;
-      --primary-column: 2;
-      --rows: 3;
-      --primary-row: 2;
-      --expand-top: 0;
-      --expand-right: 0;
-      --expand-bottom: 1;
-      --expand-left: 1;
+      --span-columns: 2;
+      --column: 2;
+      --span-rows: 3;
+      --row: 2;
+      --overflow-top: 0;
+      --overflow-right: 0;
+      --overflow-bottom: 1;
+      --overflow-left: 1;
     }
 
     &:nth-child(3) {
-      --primary-column: 3;
-      --expand-left: 1;
+      --column: 3;
+      --overflow-left: 1;
     }
 
     &:nth-child(4) {
-      --primary-column: 4;
-      --rows: 2;
-      --primary-row: 2;
+      --column: 4;
+      --span-rows: 2;
+      --row: 2;
     }
 
     &:nth-child(5) {
-      --rows: 2;
-      --primary-row: 2;
+      --span-rows: 2;
+      --row: 2;
     }
   }
 }

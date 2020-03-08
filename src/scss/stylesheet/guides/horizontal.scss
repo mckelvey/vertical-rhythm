@@ -1,0 +1,61 @@
+// Guides: Horizontal
+
+.with-horizontal-guides {
+  position: relative;
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background:
+      repeating-linear-gradient(
+        90deg,
+        $guide-color,
+        $guide-color 0.5px,
+        transparent 0.5px,
+        transparent calc(var(--vertical-rhythm) - 0.5px),
+        $guide-color calc(var(--vertical-rhythm) - 0.5px),
+        $guide-color var(--vertical-rhythm)
+      );
+    z-index: -1;
+  }
+}
+
+.with-column-guides {
+  position: relative;
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background:
+      repeating-linear-gradient(
+        90deg,
+        $guide-color,
+        $guide-color 0.5px,
+        transparent 0.5px,
+        transparent calc(var(--vertical-rhythm) - 0.5px),
+        $guide-color calc(var(--vertical-rhythm) - 0.5px),
+        $guide-color calc(var(--vertical-rhythm) + 0.5px),
+        transparent calc(var(--vertical-rhythm) + 0.5px),
+        transparent calc(var(--vertical-rhythm) + var(--column-width) - 0.5px),
+        $guide-color calc(var(--vertical-rhythm) + var(--column-width) - 0.5px),
+        $guide-color calc(var(--vertical-rhythm) + var(--column-width) + 0.5px),
+        transparent calc(var(--vertical-rhythm) + var(--column-width) + 0.5px),
+        transparent calc(var(--vertical-rhythm) * 2 + var(--column-width) - 0.5px),
+        $guide-color calc(var(--vertical-rhythm) * 2 + var(--column-width) - 0.5px),
+        $guide-color calc(var(--vertical-rhythm) * 2 + var(--column-width))
+      );
+    z-index: -1;
+  }
+}
+
+.with-grid-paper {
+  @extend .with-horizontal-guides;
+}
