@@ -101,6 +101,7 @@ module.exports = {
     alias: {
       js: path.resolve(__dirname, 'src/js'),
       scss: path.resolve(__dirname, 'src/scss'),
+      utils: path.resolve(__dirname, 'src/js/utils'),
     },
     extensions: ['.js', '.json', '.jsx', '.scss'],
   },
