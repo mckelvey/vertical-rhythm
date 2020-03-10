@@ -8,6 +8,7 @@
   > * {
     display: block;
     margin: 0;
+    padding: var(--vertical-rhythm);
     color: rebeccapurple;
     background-color: rgba(rebeccapurple, 0.1);
     --column: 1;
