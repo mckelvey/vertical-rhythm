@@ -2,6 +2,9 @@
 
 $vertical-rhythm: 18px !default;
 
+$fluid-min-width: 320px !default;
+$fluid-max-width: 1200px !default;
+
 $columns: 5 !default;
 $minimum-column-width: 1px !default; // use same units as vertical-rhythm
 
