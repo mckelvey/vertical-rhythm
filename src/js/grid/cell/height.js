@@ -1,9 +1,13 @@
-import { VERTICAL_RHYTHM } from 'js/defaults';
-
 let gridCells = [];
 let requestId = null;
 
 const cellsNeedingUpdate = {};
+
+const getVerticalRhythm = () =>
+  parseFloat(
+    getComputedStyle(document.documentElement).getPropertyValue('line-height'),
+    10
+  );
 
 const setMinHeights = () => {
   const updates = Object.values(cellsNeedingUpdate);
@@ -28,12 +32,14 @@ const computeCellHeights = () => {
   let updateNeeded = false;
   for (let i = 0; i < gridCells.length; i += 1) {
     const cell = gridCells[i];
+    const verticalRhythm = getVerticalRhythm();
+    console.log('cell VR', verticalRhythm); // eslint-disable-line
     const naturalHeight = getNaturalHeight(cell);
-    if (naturalHeight % VERTICAL_RHYTHM !== 0) {
-      cellsNeedingUpdate[i] = {
-        cell,
-        minHeight: Math.ceil(naturalHeight / VERTICAL_RHYTHM) * VERTICAL_RHYTHM,
-      };
+    console.log('cell NH', naturalHeight, naturalHeight % verticalRhythm, Math.ceil(naturalHeight / verticalRhythm) * verticalRhythm); // eslint-disable-line
+    const minHeight =
+      Math.ceil(naturalHeight / verticalRhythm) * verticalRhythm;
+    if (naturalHeight !== minHeight) {
+      cellsNeedingUpdate[i] = { cell, minHeight };
       updateNeeded = true;
     } else {
       cellsNeedingUpdate[i] = { cell, minHeight: 'auto' };
