@@ -5,19 +5,12 @@
 }
 
 :root {
-  // --base-font-size: #{$base-font-size};
-
-  --font-adjustment: 1px;
   --header-spacing: 1;
 
   --fluid-screen: 100vw;
   --fluid-min-width: #{$fluid-min-width / 1px};
   --fluid-max-width: #{$fluid-max-width / 1px};
   --fluid-width-range: calc(var(--fluid-max-width) - var(--fluid-min-width));
-  // --fluid-min-size: 15;
-  // --fluid-max-size: 24;
-  // --fluid-size-range: calc(var(--fluid-max-size) - var(--fluid-min-size));
-  // --fluid-font-size: calc((var(--fluid-min-size) * 1px) + (var(--fluid-size-range) * (var(--fluid-screen) - (var(--fluid-min-width) * 1px)) / var(--fluid-width-range)));
 
   --fluid-min-rhythm: 15;
   --fluid-max-rhythm: 21;
@@ -25,14 +18,27 @@
   --float-vertical-rhythm: calc((var(--fluid-min-rhythm) * 1px) + (var(--fluid-size-range) * (var(--fluid-screen) - (var(--fluid-min-width) * 1px)) / var(--fluid-width-range)));
   --fluid-vertical-rhythm: var(--float-vertical-rhythm);
 
-  // --base-font-size: calc(var(--fluid-vertical-rhythm) * 0.8);
-  --fluid-font-size: calc(var(--fluid-vertical-rhythm) * 0.8);
+  --font-to-line-height-ratio: 0.8;
+  --h1-scale: 2;
+  --h2-scale: 1.5;
+  --h3-scale: 1.35;
+  --h4-scale: 1.2;
+  --h5-scale: 1;
+  --h6-scale: 1;
+
+  --fluid-font-size: calc(var(--fluid-vertical-rhythm) * var(--font-to-line-height-ratio));
   font-size: var(--fluid-font-size);
 
-  // --vertical-rhythm: #{$vertical-rhythm};
-  // --vertical-rhythm: calc(var(--fluid-font-size) * 1.2);
+  --fluid-font-size-h1: calc(var(--fluid-vertical-rhythm) * var(--font-to-line-height-ratio) * var(--h1-scale));
+  --fluid-font-size-h2: calc(var(--fluid-vertical-rhythm) * var(--font-to-line-height-ratio) * var(--h2-scale));
+  --fluid-font-size-h3: calc(var(--fluid-vertical-rhythm) * var(--font-to-line-height-ratio) * var(--h3-scale));
+  --fluid-font-size-h4: calc(var(--fluid-vertical-rhythm) * var(--font-to-line-height-ratio) * var(--h4-scale));
+  --fluid-font-size-h5: calc(var(--fluid-vertical-rhythm) * var(--font-to-line-height-ratio) * var(--h5-scale));
+  --fluid-font-size-h6: calc(var(--fluid-vertical-rhythm) * var(--font-to-line-height-ratio) * var(--h6-scale));
+
   --vertical-rhythm: var(--fluid-vertical-rhythm);
   line-height: var(--float-vertical-rhythm);
+
   --columns: #{$columns};
   @if $minimum-column-width % $vertical-rhythm == 0 {
     --minimum-column-width: #{$minimum-column-width};
@@ -40,12 +46,15 @@
     --minimum-column-width: #{$minimum-column-width - ($minimum-column-width % $vertical-rhythm) + $vertical-rhythm};
   }
   --column-width: calc((100% - (var(--columns) * 2 * var(--fluid-vertical-rhythm))) / var(--columns));
+
   --rows: #{$rows};
+  // TODO: need to automate minimum-row-height much as with float/fluid VR
   @if $minimum-row-height % $vertical-rhythm == 0 {
     --minimum-row-height: #{$minimum-row-height};
   } @else {
     --minimum-row-height: #{$minimum-row-height - ($minimum-row-height % $vertical-rhythm) + $vertical-rhythm};
   }
+
   --column-pattern: var(--fluid-vertical-rhythm) minmax(var(--minimum-column-width), 1fr) var(--fluid-vertical-rhythm);
   --row-pattern: var(--fluid-vertical-rhythm) minmax(var(--minimum-row-height), auto) var(--fluid-vertical-rhythm);
 }
@@ -53,14 +62,14 @@
 @media screen and (max-width: #{$fluid-min-width - 1}) {
   :root {
     --fluid-font-size: calc(var(--fluid-min-size) * 1px);
-    --vertical-rhythm: calc(var(--fluid-min-rhythm) * 1px);
+    --fluid-vertical-rhythm: calc(var(--fluid-min-rhythm) * 1px);
   }
 }
 
 @media screen and (min-width: #{$fluid-max-width}) {
   :root {
     --fluid-font-size: calc(var(--fluid-max-size) * 1px);
-    --vertical-rhythm: calc(var(--fluid-max-rhythm) * 1px);
+    --fluid-vertical-rhythm: calc(var(--fluid-max-rhythm) * 1px);
   }
 }
 
@@ -81,28 +90,32 @@ body {
 }
 
 h1 {
-  font-size: calc(var(--fluid-font-size) * 2);
+  font-size: var(--fluid-font-size-h1);
   line-height: calc(var(--fluid-vertical-rhythm) * 2);
 }
 
 h2 {
-  font-size: calc(var(--fluid-font-size) * 1.5);
+  font-size: var(--fluid-font-size-h2);
   line-height: calc(var(--fluid-vertical-rhythm) * 2);
 }
 
 h3 {
-  font-size: calc(var(--fluid-font-size) * 1.35);
+  font-size: var(--fluid-font-size-h3);
   line-height: calc(var(--fluid-vertical-rhythm) * 1.5);
 }
 
 h4 {
-  font-size: calc(var(--fluid-font-size) * 1.2);
+  font-size: var(--fluid-font-size-h4);
   line-height: calc(var(--fluid-vertical-rhythm) * 1.25);
 }
 
-h5,
+h5 {
+  font-size: var(--fluid-font-size-h5);
+  line-height: calc(var(--fluid-vertical-rhythm) * 1);
+}
+
 h6 {
-  font-size: calc(var(--fluid-font-size) * 1);
+  font-size: var(--fluid-font-size-h6);
   line-height: calc(var(--fluid-vertical-rhythm) * 1);
 }
 

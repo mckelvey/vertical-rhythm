@@ -1,3 +1,5 @@
+import { computeHeights, headerVRHandler } from './grid/height';
+
 let root = null;
 let requestId = null;
 let verticalRhythm = null;
@@ -9,12 +11,12 @@ const getVerticalRhythm = () =>
   );
 
 const setVerticalRhythm = () => {
-  console.log('update', verticalRhythm); // eslint-disable-line
   if (verticalRhythm) {
     document.documentElement.style.setProperty(
       '--fluid-vertical-rhythm',
       `${verticalRhythm}px`
     );
+    computeHeights();
   }
   requestId = null;
 };
@@ -38,6 +40,7 @@ export const vrHandler = () => {
   if (root) {
     window.addEventListener('resize', floorVerticalRhythm);
     floorVerticalRhythm();
+    headerVRHandler();
   }
 };
 

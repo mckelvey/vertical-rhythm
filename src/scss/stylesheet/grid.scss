@@ -27,7 +27,6 @@
     }
 
     &:nth-child(2) {
-      display: none;
       --span-columns: 2;
       --column: 2;
       --span-rows: 3;
@@ -44,14 +43,12 @@
     }
 
     &:nth-child(4) {
-      display: none;
       --column: 4;
       --span-rows: 2;
       --row: 2;
     }
 
     &:nth-child(5) {
-      display: none;
       --span-rows: 2;
       --row: 2;
     }
