@@ -22,7 +22,8 @@
   --fluid-min-rhythm: 15;
   --fluid-max-rhythm: 21;
   --fluid-size-range: calc(var(--fluid-max-rhythm) - var(--fluid-min-rhythm));
-  --fluid-vertical-rhythm: calc((var(--fluid-min-rhythm) * 1px) + (var(--fluid-size-range) * (var(--fluid-screen) - (var(--fluid-min-width) * 1px)) / var(--fluid-width-range)));
+  --float-vertical-rhythm: calc((var(--fluid-min-rhythm) * 1px) + (var(--fluid-size-range) * (var(--fluid-screen) - (var(--fluid-min-width) * 1px)) / var(--fluid-width-range)));
+  --fluid-vertical-rhythm: var(--float-vertical-rhythm);
 
   // --base-font-size: calc(var(--fluid-vertical-rhythm) * 0.8);
   --fluid-font-size: calc(var(--fluid-vertical-rhythm) * 0.8);
@@ -31,22 +32,22 @@
   // --vertical-rhythm: #{$vertical-rhythm};
   // --vertical-rhythm: calc(var(--fluid-font-size) * 1.2);
   --vertical-rhythm: var(--fluid-vertical-rhythm);
-  line-height: var(--fluid-vertical-rhythm);
+  line-height: var(--float-vertical-rhythm);
   --columns: #{$columns};
   @if $minimum-column-width % $vertical-rhythm == 0 {
     --minimum-column-width: #{$minimum-column-width};
   } @else {
     --minimum-column-width: #{$minimum-column-width - ($minimum-column-width % $vertical-rhythm) + $vertical-rhythm};
   }
-  --column-width: calc((100% - (var(--columns) * 2 * var(--vertical-rhythm))) / var(--columns));
+  --column-width: calc((100% - (var(--columns) * 2 * var(--fluid-vertical-rhythm))) / var(--columns));
   --rows: #{$rows};
   @if $minimum-row-height % $vertical-rhythm == 0 {
     --minimum-row-height: #{$minimum-row-height};
   } @else {
     --minimum-row-height: #{$minimum-row-height - ($minimum-row-height % $vertical-rhythm) + $vertical-rhythm};
   }
-  --column-pattern: var(--vertical-rhythm) minmax(var(--minimum-column-width), 1fr) var(--vertical-rhythm);
-  --row-pattern: var(--vertical-rhythm) minmax(var(--minimum-row-height), auto) var(--vertical-rhythm);
+  --column-pattern: var(--fluid-vertical-rhythm) minmax(var(--minimum-column-width), 1fr) var(--fluid-vertical-rhythm);
+  --row-pattern: var(--fluid-vertical-rhythm) minmax(var(--minimum-row-height), auto) var(--fluid-vertical-rhythm);
 }
 
 @media screen and (max-width: #{$fluid-min-width - 1}) {
@@ -68,7 +69,7 @@ body {
   margin: 0;
   padding: 0;
   font-size: var(--fluid-font-size);
-  line-height: var(--vertical-rhythm);
+  line-height: var(--fluid-vertical-rhythm);
 }
 
 html {
@@ -111,7 +112,7 @@ h3,
 h4,
 h5,
 h6 {
-  margin: var(--vertical-rhythm) 0 calc(var(--vertical-rhythm) * var(--header-spacing));
+  margin: var(--fluid-vertical-rhythm) 0 calc(var(--fluid-vertical-rhythm) * var(--header-spacing));
 
   &:first-child {
     margin-top: 0;
@@ -119,7 +120,7 @@ h6 {
 }
 
 p {
-  margin: 0 0 var(--vertical-rhythm) 0;
+  margin: 0 0 var(--fluid-vertical-rhythm) 0;
   font-size: var(--fluid-font-size);
   font-family: sans-serif;
   line-height: var(--fluid-vertical-rhythm);

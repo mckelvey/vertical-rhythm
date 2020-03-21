@@ -16,9 +16,9 @@
         $guide-color,
         $guide-color 0.5px,
         transparent 0.5px,
-        transparent calc(var(--vertical-rhythm) - 0.5px),
-        $guide-color calc(var(--vertical-rhythm) - 0.5px),
-        $guide-color var(--vertical-rhythm)
+        transparent calc(var(--fluid-vertical-rhythm) - 0.5px),
+        $guide-color calc(var(--fluid-vertical-rhythm) - 0.5px),
+        $guide-color var(--fluid-vertical-rhythm)
       );
     z-index: -1;
   }
@@ -40,17 +40,17 @@
         $guide-color,
         $guide-color 0.5px,
         transparent 0.5px,
-        transparent calc(var(--vertical-rhythm) - 0.5px),
-        $guide-color calc(var(--vertical-rhythm) - 0.5px),
-        $guide-color calc(var(--vertical-rhythm) + 0.5px),
-        transparent calc(var(--vertical-rhythm) + 0.5px),
-        transparent calc(var(--vertical-rhythm) + var(--column-width) - 0.5px),
-        $guide-color calc(var(--vertical-rhythm) + var(--column-width) - 0.5px),
-        $guide-color calc(var(--vertical-rhythm) + var(--column-width) + 0.5px),
-        transparent calc(var(--vertical-rhythm) + var(--column-width) + 0.5px),
-        transparent calc(var(--vertical-rhythm) * 2 + var(--column-width) - 0.5px),
-        $guide-color calc(var(--vertical-rhythm) * 2 + var(--column-width) - 0.5px),
-        $guide-color calc(var(--vertical-rhythm) * 2 + var(--column-width))
+        transparent calc(var(--fluid-vertical-rhythm) - 0.5px),
+        $guide-color calc(var(--fluid-vertical-rhythm) - 0.5px),
+        $guide-color calc(var(--fluid-vertical-rhythm) + 0.5px),
+        transparent calc(var(--fluid-vertical-rhythm) + 0.5px),
+        transparent calc(var(--fluid-vertical-rhythm) + var(--column-width) - 0.5px),
+        $guide-color calc(var(--fluid-vertical-rhythm) + var(--column-width) - 0.5px),
+        $guide-color calc(var(--fluid-vertical-rhythm) + var(--column-width) + 0.5px),
+        transparent calc(var(--fluid-vertical-rhythm) + var(--column-width) + 0.5px),
+        transparent calc(var(--fluid-vertical-rhythm) * 2 + var(--column-width) - 0.5px),
+        $guide-color calc(var(--fluid-vertical-rhythm) * 2 + var(--column-width) - 0.5px),
+        $guide-color calc(var(--fluid-vertical-rhythm) * 2 + var(--column-width))
       );
     z-index: -1;
   }

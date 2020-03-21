@@ -15,9 +15,9 @@
         $guide-color,
         $guide-color 0.5px,
         transparent 0.5px,
-        transparent calc(var(--vertical-rhythm) - 0.5px),
-        $guide-color calc(var(--vertical-rhythm) - 0.5px),
-        $guide-color var(--vertical-rhythm)
+        transparent calc(var(--fluid-vertical-rhythm) - 0.5px),
+        $guide-color calc(var(--fluid-vertical-rhythm) - 0.5px),
+        $guide-color var(--fluid-vertical-rhythm)
       );
     z-index: -1;
   }

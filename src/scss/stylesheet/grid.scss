@@ -8,7 +8,7 @@
   > * {
     display: block;
     margin: 0;
-    padding: var(--vertical-rhythm);
+    padding: var(--fluid-vertical-rhythm);
     color: rebeccapurple;
     background-color: rgba(rebeccapurple, 0.1);
     --column: 1;
@@ -27,6 +27,7 @@
     }
 
     &:nth-child(2) {
+      display: none;
       --span-columns: 2;
       --column: 2;
       --span-rows: 3;
@@ -43,12 +44,14 @@
     }
 
     &:nth-child(4) {
+      display: none;
       --column: 4;
       --span-rows: 2;
       --row: 2;
     }
 
     &:nth-child(5) {
+      display: none;
       --span-rows: 2;
       --row: 2;
     }

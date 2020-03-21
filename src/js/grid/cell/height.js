@@ -10,13 +10,12 @@ const getVerticalRhythm = () =>
   );
 
 const setMinHeights = () => {
-  const updates = Object.values(cellsNeedingUpdate);
-  for (let i = 0; i < updates.length; i += 1) {
-    const { cell, minHeight } = updates[i];
+  Object.values(cellsNeedingUpdate).forEach(({ cell, minHeight }) => {
+    console.log('update', cell, minHeight); // eslint-disable-line
     if (minHeight !== 'auto') {
-      cell.style.minHeight = minHeight;
+      cell.style.minHeight = minHeight; // eslint-disable-line no-param-reassign
     }
-  }
+  });
   requestId = null;
 };
 
@@ -25,7 +24,8 @@ const getNaturalHeight = cell => {
   if (definedHeight !== 'auto') {
     cell.style.minHeight = 'auto'; // eslint-disable-line no-param-reassign
   }
-  return cell.offsetHeight;
+  const { height } = cell.getBoundingClientRect();
+  return height;
 };
 
 const computeCellHeights = () => {
@@ -33,13 +33,11 @@ const computeCellHeights = () => {
   for (let i = 0; i < gridCells.length; i += 1) {
     const cell = gridCells[i];
     const verticalRhythm = getVerticalRhythm();
-    console.log('cell VR', verticalRhythm); // eslint-disable-line
     const naturalHeight = getNaturalHeight(cell);
-    console.log('cell NH', naturalHeight, naturalHeight % verticalRhythm, Math.ceil(naturalHeight / verticalRhythm) * verticalRhythm); // eslint-disable-line
     const minHeight =
       Math.ceil(naturalHeight / verticalRhythm) * verticalRhythm;
     if (naturalHeight !== minHeight) {
-      cellsNeedingUpdate[i] = { cell, minHeight };
+      cellsNeedingUpdate[i] = { cell, minHeight: `${minHeight}px` };
       updateNeeded = true;
     } else {
       cellsNeedingUpdate[i] = { cell, minHeight: 'auto' };
