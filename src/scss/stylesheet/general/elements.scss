@@ -131,9 +131,30 @@ h6 {
   }
 }
 
-p {
-  margin: 0 0 var(--fluid-vertical-rhythm) 0;
+blockquote,
+figure {
+  margin-top: var(--fluid-vertical-rhythm);
+  margin-bottom: var(--fluid-vertical-rhythm);
+}
+
+p,
+ul,
+ol,
+dl {
+  margin-top: var(--fluid-vertical-rhythm);
+  margin-bottom: var(--fluid-vertical-rhythm);
   font-size: var(--fluid-font-size);
   font-family: sans-serif;
   line-height: var(--fluid-vertical-rhythm);
+}
+
+table {
+  line-height: var(--fluid-vertical-rhythm);
+  border-spacing: 0;
+  border-collapse: collapse;
+
+  th,
+  td {
+    padding: 0;
+  }
 }
