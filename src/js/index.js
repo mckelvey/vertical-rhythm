@@ -1,10 +1,6 @@
 import ready from 'utils/ready';
-import { vrHandler } from './vr';
-// import { resizeHandler as gridCellHeightResizeHandler } from './grid/cell/height';
-// import { headerVRHandler } from './grid/height';
+import { vrgInit } from './vrg';
 
 ready(() => {
-  // gridCellHeightResizeHandler();
-  vrHandler();
-  // headerVRHandler();
+  vrgInit();
 });

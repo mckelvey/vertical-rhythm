@@ -46,17 +46,16 @@
     --minimum-column-width: #{$minimum-column-width - ($minimum-column-width % $vertical-rhythm) + $vertical-rhythm};
   }
   --column-width: calc((100% - (var(--columns) * 2 * var(--fluid-vertical-rhythm))) / var(--columns));
+  --column-pattern: var(--fluid-vertical-rhythm) minmax(var(--minimum-column-width), 1fr) var(--fluid-vertical-rhythm);
 
   --rows: #{$rows};
-  // TODO: need to automate minimum-row-height much as with float/fluid VR
   @if $minimum-row-height % $vertical-rhythm == 0 {
-    --minimum-row-height: #{$minimum-row-height};
+    --given-min-row-height: #{$minimum-row-height};
   } @else {
-    --minimum-row-height: #{$minimum-row-height - ($minimum-row-height % $vertical-rhythm) + $vertical-rhythm};
+    --given-min-row-height: #{$minimum-row-height - ($minimum-row-height % $vertical-rhythm) + $vertical-rhythm};
   }
-
-  --column-pattern: var(--fluid-vertical-rhythm) minmax(var(--minimum-column-width), 1fr) var(--fluid-vertical-rhythm);
-  --row-pattern: var(--fluid-vertical-rhythm) minmax(var(--minimum-row-height), auto) var(--fluid-vertical-rhythm);
+  --fluid-min-row-height: var(--given-min-row-height);
+  --row-pattern: var(--fluid-vertical-rhythm) minmax(var(--fluid-min-row-height), auto) var(--fluid-vertical-rhythm);
 }
 
 @media screen and (max-width: #{$fluid-min-width - 1}) {

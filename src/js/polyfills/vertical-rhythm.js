@@ -1,14 +1,12 @@
-import { computeHeights, headerVRHandler } from './grid/height';
+import { updateChildMinHeightsIfNeeded } from './child-min-height';
+import { updateMinRowHeightIfNeeded } from './min-row-height';
 
 let root = null;
 let requestId = null;
 let verticalRhythm = null;
 
 const getVerticalRhythm = () =>
-  parseFloat(
-    getComputedStyle(document.documentElement).getPropertyValue('line-height'),
-    10
-  );
+  parseFloat(getComputedStyle(root).getPropertyValue('line-height'), 10);
 
 const setVerticalRhythm = () => {
   if (verticalRhythm) {
@@ -16,7 +14,8 @@ const setVerticalRhythm = () => {
       '--fluid-vertical-rhythm',
       `${verticalRhythm}px`
     );
-    computeHeights();
+    updateMinRowHeightIfNeeded();
+    updateChildMinHeightsIfNeeded();
   }
   requestId = null;
 };
@@ -35,15 +34,14 @@ const floorVerticalRhythm = () => {
   }
 };
 
-export const vrHandler = () => {
+export const verticalRhythmInit = () => {
   root = document.documentElement;
   if (root) {
     window.addEventListener('resize', floorVerticalRhythm);
     floorVerticalRhythm();
-    headerVRHandler();
   }
 };
 
 export default {
-  vrHandler,
+  verticalRhythmInit,
 };
