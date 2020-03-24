@@ -8,8 +8,9 @@ const getVerticalRhythm = el =>
 
 const setChildStyles = () => {
   Object.values(childUpdatesNeeded).forEach(({ el, styles }) => {
+    const { style } = el;
     Object.keys(styles).forEach(property => {
-      el.style[property] = `${styles[property]}px`; // eslint-disable-line no-param-reassign
+      style[property] = `${styles[property]}px`;
     });
   });
   requestId = null;
@@ -18,8 +19,9 @@ const setChildStyles = () => {
 const getNaturalHeight = el => {
   const definedHeight = getComputedStyle(el).getPropertyValue('minHeight');
   if (definedHeight !== 'auto') {
-    el.style.paddingTop = 0; // eslint-disable-line no-param-reassign
-    el.style.minHeight = 'auto'; // eslint-disable-line no-param-reassign
+    const { style } = el;
+    style.paddingTop = 0;
+    style.minHeight = 'auto';
   }
   return el.offsetHeight;
 };
